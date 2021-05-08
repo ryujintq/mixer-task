@@ -1,0 +1,6 @@
+type UserList @model {
+  id: ID!
+  username: String!
+  favourites: [String]
+  toWatch: [String]
+}
