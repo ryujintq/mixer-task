@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { getBySearch, getPopular } from '../../api/api'
 import Movies from '../../components/Movies/Movies'
 import Searchbar from '../../components/Searchbar/Searchbar'
+
 import './Search.css'
 
 const Search = () => {
@@ -32,7 +33,7 @@ const Search = () => {
     const handleConfirm = async () => {
         const searched = await getBySearch(title)
         setHeader(`Search for ${title}`)
-        setSearchedMovies(searched.data.Search)
+        setSearchedMovies(searched.data.results)
     }
 
     return (

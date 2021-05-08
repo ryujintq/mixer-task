@@ -1,17 +1,33 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { getImageURL } from '../../api/api'
+import { FavouritesContext } from '../../context/FavouritesContext'
+import { ToWatchContext } from '../../context/ToWatchContext'
 import './Movie.css'
 
 const Movie = ({ movie }) => {
-    const imageURL = movie.poster_path ? getImageURL(movie.poster_path) : movie.Poster
+    const [favourites, setFavourites] = useContext(FavouritesContext)
+    const [toWatch, setToWatch] = useContext(ToWatchContext)
+
+    const handleAddToFavourites = () => {
+        setFavourites(prevFavs => {
+            return [...prevFavs, movie]
+        })
+    }
+
+    const handleAddToToWatch = () => {
+        setToWatch(prevToWatch => {
+            return [...prevToWatch, movie]
+        })
+    }
+
     return (
         <div className='movie'>
-            {movie.title || movie.Title}
-            <img src={`${imageURL}`} alt="" />
+            {movie.title}
+            <img src={`${getImageURL(movie.poster_path)}`} alt="" />
             <div className="movie-overlay">
                 <p>Overview</p>
-                <p>Add To Favourites</p>
-                <p>Add To Watchlist</p>
+                <p onClick={handleAddToFavourites}>Add To Favourites</p>
+                <p onClick={handleAddToToWatch}>Add To Watchlist</p>
             </div>
         </div>
     )

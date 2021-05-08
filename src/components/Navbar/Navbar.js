@@ -6,7 +6,7 @@ const Navbar = () => {
     return (
         <div className='navbar'>
             <div className="navbar-left">
-                <h4>My Movies</h4>
+                <h3>My Movies</h3>
             </div>
             <div className="navbar-right">
                 <AmplifySignOut />
