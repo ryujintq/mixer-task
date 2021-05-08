@@ -1,9 +1,10 @@
 .movie {
     position: relative;
+    overflow: hidden;
 }
 
 .movie img {
-    height: auto;
+    height: 100%;
     width: 100%;
 }
 
@@ -26,7 +27,7 @@
     cursor: pointer;
 }
 
-.search .movie:hover > .movie-overlay {
+.movie:hover > .movie-overlay {
     height: 150px;
     opacity: 1;
 }

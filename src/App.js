@@ -7,17 +7,20 @@ import { SelectedContext } from './context/SelectedContext'
 import Search from './pages/Search/Search'
 import Favourites from './pages/Favourites/Favourites'
 import ToWatch from './pages/ToWatch/ToWatch'
+import { OverviewContext } from './context/OverviewContext'
+import Overview from './pages/Overview/Overview'
 import './App.css'
 
 const App = () => {
   const [selected] = useContext(SelectedContext)
+  const [overview] = useContext(OverviewContext)
   const pages = { Search, Favourites, ToWatch } //for dynamic page switching
   const Component = pages[selected] // get correct component to load 
 
   useEffect(() => {
     const checkUser = async () => {
       let user = await Auth.currentAuthenticatedUser();
-      alert(user.username)
+      console.log(user.username)
     }
     checkUser()
   }, [])
@@ -26,8 +29,12 @@ const App = () => {
     <div className="app">
       <Navbar />
       <div className="main">
-        <Sidebar />
-        <Component />
+        {overview ? <Overview /> : (
+          <>
+            <Sidebar />
+            <Component />
+          </>
+        )}
       </div>
     </div>
   )

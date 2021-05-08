@@ -1,0 +1,23 @@
+.movie-info {
+    display: flex;
+    flex-direction: row;
+    max-width: 1200px;
+    margin-top: 3rem;
+    background-color: var(--primary);
+}
+
+.description {
+    padding: 2rem;
+}
+
+.entry {
+    margin-bottom: 2rem;
+}
+
+.overview-close {
+    position: absolute;
+    top: 4rem;
+    right: 2rem;
+    cursor: pointer;
+    color: var(--primary);
+}
