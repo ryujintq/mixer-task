@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "mixertask91d4164f": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}

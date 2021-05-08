@@ -1,0 +1,20 @@
+.sidebar {
+    width: 200px;
+    background-color: var(--light);
+    height: calc(100vh - 50px);
+    color: var(--dark);
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar h4 {
+    padding: 1rem 0 1rem 2rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.sidebar h4.selected,
+.sidebar h4:hover {
+    color: white;
+    background-color: var(--primary);
+}

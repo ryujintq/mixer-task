@@ -1,0 +1,18 @@
+.page {
+    width: 100%;
+    height: calc(100vh - 50px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+}
+
+.search h1 {
+    margin-bottom: 1rem;
+}
+
+.search h2 {
+    margin: 2rem 0 1rem 0;
+    text-align: left;
+    width: 100%;
+}
