@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { getImageURL } from '../../api/api'
 import { updateMovieList } from '../../api/graphql'
 import { FavouritesContext } from '../../context/FavouritesContext'
@@ -14,12 +14,15 @@ const Movie = ({ movie }) => {
     const [toWatch, setToWatch] = useContext(ToWatchContext)
     const [overview, setOverview] = useContext(OverviewContext)
     const [selected] = useContext(SelectedContext)
+    const [favClicked, setFavClicked] = useState(false)
+    const [toWatchClicked, setToWatchClicked] = useState(false)
 
     const handleOverview = () => {
         setOverview(movie)
     }
 
     const handleAddToFavourites = async () => {
+        setFavClicked(true)
         setFavourites(prevState => {
             return [...prevState, movie]
         })
@@ -27,6 +30,7 @@ const Movie = ({ movie }) => {
     }
 
     const handleAddToToWatch = async () => {
+        setToWatchClicked(true)
         setToWatch(prevState => {
             return [...prevState, movie]
         })
@@ -38,8 +42,8 @@ const Movie = ({ movie }) => {
             <img src={`${getImageURL(movie.poster_path)} `} alt="" />
             <div className="movie-overlay">
                 <p onClick={handleOverview}>Overview</p>
-                {selected === 'Search' && <p onClick={handleAddToFavourites}>Add To Favourites</p>}
-                {selected === 'Search' && <p onClick={handleAddToToWatch}>Add To Watchlist</p>}
+                {selected === 'Search' && <p onClick={handleAddToFavourites}>{favClicked ? 'Added to favs' : 'Add To Favourites'}</p>}
+                {selected === 'Search' && <p onClick={handleAddToToWatch}>{toWatchClicked ? 'Added to watch list' : 'Add To Watchlist'}</p>}
             </div>
         </div>
     )
