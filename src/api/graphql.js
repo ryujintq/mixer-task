@@ -1,25 +1,20 @@
 import { API, Auth } from 'aws-amplify'
 import { createUserList, updateUserList } from '../graphql/mutations'
-import { localStorageSet } from '../util/localStorage';
+import { getUserList } from '../graphql/queries';
+import { localStorageGet, localStorageSet } from '../util/localStorage';
 
-export const createList = async () => {
+export const createList = async callback => {
     const { username } = await Auth.currentAuthenticatedUser();
-    console.log(username)
-    const response = await API.graphql({ query: createUserList, variables: { input: { username, favourites: [], toWatch: [] } } })
+    const response = await API.graphql({ query: createUserList, variables: { input: { username } } })
     localStorageSet('id', response.data.createUserList.id)
+    callback(localStorageGet('id'))
 }
 
 export const getList = async id => {
-    const response = await API.graphql({ query: createUserList, variables: { input: { id } } })
-    console.log(response)
-    return response.data.createUserList
+    const response = await API.graphql({ query: getUserList, variables: { id } })
+    return response.data.getUserList
 }
 
-export const updateFavourites = async (id, favourites) => {
-    const response = await API.graphql({ query: updateUserList, variables: { input: { id, favourites } } })
-    console.log(response)
-}
-
-export const updateToWatch = async (id, toWatch) => {
-    await API.graphql({ query: updateUserList, variables: { input: { id, toWatch } } })
+export const updateMovieList = async (id, favourites, toWatch) => {
+    await API.graphql({ query: updateUserList, variables: { input: { id, favourites: [...favourites], toWatch } } })
 }

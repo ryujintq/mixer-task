@@ -7,18 +7,36 @@ export const getUserList = /* GraphQL */ `
       id
       username
       favourites {
-        title
+        adult
+        backdrop_path
+        genre_ids
+        id
+        original_language
+        original_title
         overview
-        release_date
+        popularity
         poster_path
+        release_date
+        title
+        video
         vote_average
+        vote_count
       }
       toWatch {
-        title
+        adult
+        backdrop_path
+        genre_ids
+        id
+        original_language
+        original_title
         overview
-        release_date
+        popularity
         poster_path
+        release_date
+        title
+        video
         vote_average
+        vote_count
       }
       createdAt
       updatedAt
@@ -36,18 +54,36 @@ export const listUserLists = /* GraphQL */ `
         id
         username
         favourites {
-          title
+          adult
+          backdrop_path
+          genre_ids
+          id
+          original_language
+          original_title
           overview
-          release_date
+          popularity
           poster_path
+          release_date
+          title
+          video
           vote_average
+          vote_count
         }
         toWatch {
-          title
+          adult
+          backdrop_path
+          genre_ids
+          id
+          original_language
+          original_title
           overview
-          release_date
+          popularity
           poster_path
+          release_date
+          title
+          video
           vote_average
+          vote_count
         }
         createdAt
         updatedAt

@@ -18,39 +18,36 @@ const App = () => {
   const [selected] = useContext(SelectedContext)
   const [favourites, setFavourites] = useContext(FavouritesContext)
   const [toWatch, setToWatch] = useContext(ToWatchContext)
-  const [listId] = useContext(ListIdContext)
+  const [listId, setListId] = useContext(ListIdContext)
   const [overview] = useContext(OverviewContext)
   const pages = { Search, Favourites, ToWatch } //for dynamic page switching
   const Page = pages[selected] // get correct page to load 
 
-  //if list exists, set favourites and to watch
-  //if it does not, create a new list
+  //if it does not exist, create a new list
+  //if list exists, set favourites and towatch lists
   useEffect(() => {
     if (!listId) {
       const createListAsync = async () => {
-        await createList()
+        await createList(setListId)
       }
       return createListAsync()
     }
 
     const getListAsync = async () => {
-      await getList()
+      const { favourites, toWatch } = await getList(listId)
+      setFavourites(favourites || [])
+      setToWatch(toWatch || [])
     }
     getListAsync()
-    // setFavourites(response.favourites)
-    // setToWatch(response.toWatch)
-  }, [listId, setFavourites, setToWatch])
+  }, [listId, setFavourites, setToWatch, setListId])
 
   return (
-    <div className="app">
+    <div className={`app ${overview ? 'no-scroll' : ''}`}>
       <Navbar />
       <div className="main">
-        {overview ? <Overview /> : (
-          <>
-            <Sidebar />
-            <Page />
-          </>
-        )}
+        <Sidebar />
+        <Page />
+        {overview && <Overview />}
       </div>
     </div>
   )

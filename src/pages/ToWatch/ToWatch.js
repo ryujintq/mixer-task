@@ -5,11 +5,10 @@ import './ToWatch.css'
 
 const ToWatch = () => {
     const [toWatch] = useContext(ToWatchContext)
-
     return (
-        <div className='to-watch page'>
-            <h1>To Watch</h1>
-            {!toWatch.length ? <p>No movies added to the watch list yet</p> : (
+        <div className='favourites page'>
+            <h1>Movies To Watch</h1>
+            {!toWatch.length ? <p>No movies added to watch list yet</p> : (
                 <Movies movies={toWatch} />
             )}
         </div>

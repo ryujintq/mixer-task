@@ -11,31 +11,34 @@ const Overview = () => {
     }
 
     return (
-        <div className='overview page'>
+        <div className={`overview ${overview ? 'show-overview' : ''}`}>
             <h1>Overview</h1>
             <div className="overview-close" onClick={handleClose}>
-                <i class="fas fa-times fa-3x"></i>
+                <i className="fas fa-times fa-3x"></i>
             </div>
             <div className="movie-info">
-                <img src={`${getImageURL(overview.poster_path)}`} alt="" />
-                <div className="description">
-                    <div className="entry">
-                        <h2>Title</h2>
-                        <p>{overview.title}</p>
-                    </div>
-                    <div className="entry">
-                        <h2>Description</h2>
-                        <p>{overview.overview}</p>
-                    </div>
-                    <div className="entry">
-                        <h2>Release Data</h2>
-                        <p>{overview.release_date}</p>
-                    </div>
-                    <div className="entry">
-                        <h2>Rating</h2>
-                        <p>{overview.vote_average}</p>
+                <div className="movie-info-content">
+                    <img src={`${getImageURL(overview.poster_path)}`} alt="" />
+                    <div className="description">
+                        <div className="entry">
+                            <h2>Title</h2>
+                            <p>{overview.title}</p>
+                        </div>
+                        <div className="entry">
+                            <h2>Description</h2>
+                            <p>{overview.overview}</p>
+                        </div>
+                        <div className="entry">
+                            <h2>Release Data</h2>
+                            <p>{overview.release_date}</p>
+                        </div>
+                        <div className="entry">
+                            <h2>Rating</h2>
+                            <p>{overview.vote_average}</p>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
     )

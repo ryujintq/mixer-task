@@ -6,9 +6,18 @@ type UserList @model {
 }
 
 type Movie {
-  title: String
+  adult: Boolean
+  backdrop_path: String
+  genre_ids: [Int]
+  id: Int
+  original_language: String
+  original_title: String
   overview: String
-  release_date: String
+  popularity: Float
   poster_path: String
-  vote_average: String
+  release_date: String
+  title: String
+  video: Boolean
+  vote_average: Float
+  vote_count: Int
 }

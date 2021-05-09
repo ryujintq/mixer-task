@@ -6,7 +6,7 @@ const Movies = ({ movies }) => {
     return (
         <div className='movies'>
             {movies.map(movie => (
-                <Movie movie={movie} key={movie.id || movie.imbdID} />
+                <Movie movie={movie} key={movie.id} />
             ))}
         </div>
     )

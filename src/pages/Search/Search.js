@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { getBySearch, getPopular } from '../../api/api'
 import Movies from '../../components/Movies/Movies'
 import Searchbar from '../../components/Searchbar/Searchbar'
-
 import './Search.css'
 
 const Search = () => {
@@ -11,14 +10,16 @@ const Search = () => {
     const [popularMovies, setPopularMovies] = useState([])
     const [searchedMovies, setSearchedMovies] = useState([])
 
+    //Get popular movies of the week
     useEffect(() => {
         const fetchPopular = async () => {
             const populars = await getPopular()
-            setPopularMovies(populars.data.results)
+            setPopularMovies(populars)
         }
         fetchPopular()
     }, [])
 
+    //if title is empty, set the movies to the populars list
     useEffect(() => {
         if (!title) {
             setSearchedMovies([])
@@ -33,7 +34,7 @@ const Search = () => {
     const handleConfirm = async () => {
         const searched = await getBySearch(title)
         setHeader(`Search for ${title}`)
-        setSearchedMovies(searched.data.results)
+        setSearchedMovies(searched)
     }
 
     return (

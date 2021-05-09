@@ -1,13 +1,33 @@
-.movie-info {
+.overview {
+    position: fixed;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    z-index: 5;
+}
+
+.movie-info {
     max-width: 1200px;
     margin-top: 3rem;
-    background-color: var(--primary);
+    border: 50px solid var(--primary);
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+}
+
+.movie-info-content {
+    display: flex;
+    flex-direction: row;
 }
 
 .description {
     padding: 2rem;
+    background-color: var(--primary);
 }
 
 .entry {
@@ -16,8 +36,8 @@
 
 .overview-close {
     position: absolute;
-    top: 4rem;
-    right: 2rem;
+    top: 2rem;
+    right: 3rem;
     cursor: pointer;
     color: var(--primary);
 }
