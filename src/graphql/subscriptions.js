@@ -6,8 +6,20 @@ export const onCreateUserList = /* GraphQL */ `
     onCreateUserList {
       id
       username
-      favourites
-      toWatch
+      favourites {
+        title
+        overview
+        release_date
+        poster_path
+        vote_average
+      }
+      toWatch {
+        title
+        overview
+        release_date
+        poster_path
+        vote_average
+      }
       createdAt
       updatedAt
     }
@@ -18,8 +30,20 @@ export const onUpdateUserList = /* GraphQL */ `
     onUpdateUserList {
       id
       username
-      favourites
-      toWatch
+      favourites {
+        title
+        overview
+        release_date
+        poster_path
+        vote_average
+      }
+      toWatch {
+        title
+        overview
+        release_date
+        poster_path
+        vote_average
+      }
       createdAt
       updatedAt
     }
@@ -30,8 +54,20 @@ export const onDeleteUserList = /* GraphQL */ `
     onDeleteUserList {
       id
       username
-      favourites
-      toWatch
+      favourites {
+        title
+        overview
+        release_date
+        poster_path
+        vote_average
+      }
+      toWatch {
+        title
+        overview
+        release_date
+        poster_path
+        vote_average
+      }
       createdAt
       updatedAt
     }

@@ -6,8 +6,20 @@ export const getUserList = /* GraphQL */ `
     getUserList(id: $id) {
       id
       username
-      favourites
-      toWatch
+      favourites {
+        title
+        overview
+        release_date
+        poster_path
+        vote_average
+      }
+      toWatch {
+        title
+        overview
+        release_date
+        poster_path
+        vote_average
+      }
       createdAt
       updatedAt
     }
@@ -23,8 +35,20 @@ export const listUserLists = /* GraphQL */ `
       items {
         id
         username
-        favourites
-        toWatch
+        favourites {
+          title
+          overview
+          release_date
+          poster_path
+          vote_average
+        }
+        toWatch {
+          title
+          overview
+          release_date
+          poster_path
+          vote_average
+        }
         createdAt
         updatedAt
       }

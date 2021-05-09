@@ -5,10 +5,13 @@ import './Favourites.css'
 
 const Favourites = () => {
     const [favourites] = useContext(FavouritesContext)
+
     return (
         <div className='favourites page'>
             <h1>Favourites</h1>
-            <Movies movies={favourites} />
+            {!favourites.length ? <p>No favourites added yet</p> : (
+                <Movies movies={favourites} />
+            )}
         </div>
     )
 }

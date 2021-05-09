@@ -1,6 +1,14 @@
 type UserList @model {
   id: ID!
-  username: String!
-  favourites: [String]
-  toWatch: [String]
+  username: String
+  favourites: [Movie]
+  toWatch: [Movie]
+}
+
+type Movie {
+  title: String
+  overview: String
+  release_date: String
+  poster_path: String
+  vote_average: String
 }

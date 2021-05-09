@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 
-export const ToWatchContext = createContext()
+export const ToWatchContext = createContext([])
 
 export const ToWatchProvider = ({ children }) => {
     const [toWatch, setToWatch] = useState([])

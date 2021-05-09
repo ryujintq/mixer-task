@@ -27,3 +27,7 @@ body {
   align-items: center;
   padding: 1rem;
 }
+
+.page h1 {
+  margin-bottom: 1rem;
+}

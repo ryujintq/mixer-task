@@ -1,6 +1,8 @@
 import React, { useContext } from 'react'
 import { getImageURL } from '../../api/api'
+import { updateFavourites, updateToWatch } from '../../api/graphql'
 import { FavouritesContext } from '../../context/FavouritesContext'
+import { ListIdContext } from '../../context/ListId'
 import { OverviewContext } from '../../context/OverviewContext'
 import { SelectedContext } from '../../context/SelectedContext'
 import { ToWatchContext } from '../../context/ToWatchContext'
@@ -8,6 +10,7 @@ import './Movie.css'
 
 const Movie = ({ movie }) => {
     const [favourites, setFavourites] = useContext(FavouritesContext)
+    const [listId] = useContext(ListIdContext)
     const [toWatch, setToWatch] = useContext(ToWatchContext)
     const [overview, setOverview] = useContext(OverviewContext)
     const [selected] = useContext(SelectedContext)
@@ -16,16 +19,15 @@ const Movie = ({ movie }) => {
         setOverview(movie)
     }
 
-    const handleAddToFavourites = () => {
-        setFavourites(prevFavs => {
-            return [...prevFavs, movie]
-        })
+    const handleAddToFavourites = async () => {
+        // setFavourites(prevState => [...prevState, movie])
+        setFavourites([...favourites, movie])
+        await updateFavourites(listId, favourites)
     }
 
-    const handleAddToToWatch = () => {
-        setToWatch(prevToWatch => {
-            return [...prevToWatch, movie]
-        })
+    const handleAddToToWatch = async () => {
+        setToWatch(prevState => [...prevState, movie])
+        await updateToWatch(listId, toWatch)
     }
 
     return (

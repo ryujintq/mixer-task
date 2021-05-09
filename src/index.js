@@ -3,21 +3,24 @@ import ReactDOM from 'react-dom'
 import App from './App'
 import { SelectedProvider } from './context/SelectedContext'
 import { FavouritesProvider } from './context/FavouritesContext'
+import { ListIdProvider } from './context/ListId'
 import { ToWatchProvider } from './context/ToWatchContext'
+import { OverviewProvider } from './context/OverviewContext'
 import Amplify from 'aws-amplify'
 import config from './aws-exports'
-import { OverviewProvider } from './context/OverviewContext'
 Amplify.configure(config)
 
 ReactDOM.render(
-  <SelectedProvider>
+  <ListIdProvider>
     <FavouritesProvider>
       <ToWatchProvider>
-        <OverviewProvider>
-          <App />
-        </OverviewProvider>
+        <SelectedProvider>
+          <OverviewProvider>
+            <App />
+          </OverviewProvider>
+        </SelectedProvider>
       </ToWatchProvider>
     </FavouritesProvider>
-  </SelectedProvider>,
+  </ListIdProvider>,
   document.getElementById('root')
 )

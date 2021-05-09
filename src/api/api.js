@@ -6,7 +6,7 @@ export const getBySearch = async string => {
 
 export const getPopular = async () => {
     const result = await axios.get('https://api.themoviedb.org/3/movie/popular?api_key=6f6a570601756007d5aff4d3a99c8b61&language=en-US&page=1')
-    console.log(result)
+    // console.log(result)
     return result
 }
 
