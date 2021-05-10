@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { getImageURL } from '../../api/api'
 import { updateMovieList } from '../../api/graphql'
 import { FavouritesContext } from '../../context/FavouritesContext'
@@ -14,15 +14,25 @@ const Movie = ({ movie }) => {
     const [toWatch, setToWatch] = useContext(ToWatchContext)
     const [overview, setOverview] = useContext(OverviewContext)
     const [selected] = useContext(SelectedContext)
-    const [favClicked, setFavClicked] = useState(false)
-    const [toWatchClicked, setToWatchClicked] = useState(false)
+    const [isFaved, setIsFaved] = useState(false)
+    const [isToWatched, setIsToWatched] = useState(false)
+
+    const isAdded = (arr, title) => {
+        const doesExist = arr.map(el => el.title).includes(title)
+        return doesExist
+    }
+
+    useEffect(() => {
+        setIsFaved(isAdded(favourites, movie.title))
+        setIsToWatched(isAdded(toWatch, movie.title))
+    }, [favourites, toWatch, movie.title])
 
     const handleOverview = () => {
         setOverview(movie)
     }
 
     const handleAddToFavourites = async () => {
-        setFavClicked(true)
+        if (isFaved) return
         setFavourites(prevState => {
             return [...prevState, movie]
         })
@@ -30,7 +40,7 @@ const Movie = ({ movie }) => {
     }
 
     const handleAddToToWatch = async () => {
-        setToWatchClicked(true)
+        if (isToWatched) return
         setToWatch(prevState => {
             return [...prevState, movie]
         })
@@ -42,8 +52,8 @@ const Movie = ({ movie }) => {
             <img src={`${getImageURL(movie.poster_path)} `} alt="" />
             <div className="movie-overlay">
                 <p onClick={handleOverview}>Overview</p>
-                {selected === 'Search' && <p onClick={handleAddToFavourites}>{favClicked ? 'Added to favs' : 'Add To Favourites'}</p>}
-                {selected === 'Search' && <p onClick={handleAddToToWatch}>{toWatchClicked ? 'Added to watch list' : 'Add To Watchlist'}</p>}
+                {selected === 'Search' && <p onClick={handleAddToFavourites}>{isFaved ? 'Already added to favourites' : 'Add To Favourites'}</p>}
+                {selected === 'Search' && <p onClick={handleAddToToWatch}>{isToWatched ? 'Already added to watch list' : 'Add To Watchlist'}</p>}
             </div>
         </div>
     )
