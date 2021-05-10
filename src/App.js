@@ -15,11 +15,11 @@ import { ToWatchContext } from './context/ToWatchContext'
 import './App.css'
 
 const App = () => {
-  const [selected] = useContext(SelectedContext)
-  const [favourites, setFavourites] = useContext(FavouritesContext)
-  const [toWatch, setToWatch] = useContext(ToWatchContext)
-  const [listId, setListId] = useContext(ListIdContext)
-  const [overview] = useContext(OverviewContext)
+  const { selected } = useContext(SelectedContext)
+  const { setFavourites } = useContext(FavouritesContext)
+  const { setToWatch } = useContext(ToWatchContext)
+  const { listId, setListId } = useContext(ListIdContext)
+  const { overview } = useContext(OverviewContext)
 
   const pages = { Search, Favourites, ToWatch } //for dynamic page switching
   const Page = pages[selected] // get correct page to load 

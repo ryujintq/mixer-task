@@ -6,9 +6,8 @@ export const SelectedProvider = ({ children }) => {
     const [selected, setSelected] = useState('Search')
 
     return (
-        <SelectedContext.Provider value={[selected, setSelected]}>
+        <SelectedContext.Provider value={{ selected, setSelected }}>
             {children}
         </SelectedContext.Provider>
     )
 }
-

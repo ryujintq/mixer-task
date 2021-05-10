@@ -5,7 +5,7 @@ import { OverviewContext } from '../../context/OverviewContext'
 import './Overview.css'
 
 const Overview = () => {
-    const [overview, setOverview] = useContext(OverviewContext)
+    const { overview, setOverview } = useContext(OverviewContext)
 
     const handleClose = () => {
         setOverview(null)

@@ -6,7 +6,7 @@ export const FavouritesProvider = ({ children }) => {
     const [favourites, setFavourites] = useState([])
 
     return (
-        <FavouritesContext.Provider value={[favourites, setFavourites]}>
+        <FavouritesContext.Provider value={{ favourites, setFavourites }}>
             {children}
         </FavouritesContext.Provider>
     )

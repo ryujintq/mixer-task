@@ -6,7 +6,7 @@ export const ToWatchProvider = ({ children }) => {
     const [toWatch, setToWatch] = useState([])
 
     return (
-        <ToWatchContext.Provider value={[toWatch, setToWatch]}>
+        <ToWatchContext.Provider value={{ toWatch, setToWatch }}>
             {children}
         </ToWatchContext.Provider>
     )

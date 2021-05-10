@@ -6,7 +6,7 @@ export const OverviewProvider = ({ children }) => {
     const [overview, setOverview] = useState(null)
 
     return (
-        <OverviewContext.Provider value={[overview, setOverview]}>
+        <OverviewContext.Provider value={{ overview, setOverview }}>
             {children}
         </OverviewContext.Provider>
     )

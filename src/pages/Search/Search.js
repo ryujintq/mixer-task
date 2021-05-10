@@ -17,7 +17,7 @@ const Search = () => {
             setPopularMovies(populars)
         }
         fetchPopular()
-    }, [])
+    }, [setPopularMovies])
 
     //if title is empty, set the movies to the populars list
     useEffect(() => {
@@ -25,7 +25,7 @@ const Search = () => {
             setSearchedMovies([])
             setHeader('')
         }
-    }, [title])
+    }, [title, setHeader, setSearchedMovies])
 
     const handleTitleChange = e => {
         setTitle(e.target.value)

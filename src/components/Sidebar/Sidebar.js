@@ -3,7 +3,7 @@ import { SelectedContext } from '../../context/SelectedContext'
 import './Sidebar.css'
 
 const Sidebar = () => {
-    const [selected, setSelected] = useContext(SelectedContext)
+    const { selected, setSelected } = useContext(SelectedContext)
 
     const updateSelected = e => {
         setSelected(e.target.getAttribute('name'))

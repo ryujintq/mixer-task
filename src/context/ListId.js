@@ -4,10 +4,10 @@ import { localStorageGet } from "../util/localStorage";
 export const ListIdContext = createContext()
 
 export const ListIdProvider = ({ children }) => {
-    const [id, setId] = useState(localStorageGet('id'))
+    const [listId, setListId] = useState(localStorageGet('id'))
 
     return (
-        <ListIdContext.Provider value={[id, setId]}>
+        <ListIdContext.Provider value={{ listId, setListId }}>
             {children}
         </ListIdContext.Provider>
     )

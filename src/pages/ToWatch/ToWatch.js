@@ -4,7 +4,7 @@ import { ToWatchContext } from '../../context/ToWatchContext'
 import './ToWatch.css'
 
 const ToWatch = () => {
-    const [toWatch] = useContext(ToWatchContext)
+    const { toWatch } = useContext(ToWatchContext)
     return (
         <div className='favourites page'>
             <h1>Movies To Watch</h1>

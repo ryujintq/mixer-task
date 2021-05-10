@@ -9,11 +9,12 @@ import { ToWatchContext } from '../../context/ToWatchContext'
 import './Movie.css'
 
 const Movie = ({ movie }) => {
-    const [listId] = useContext(ListIdContext)
-    const [favourites, setFavourites] = useContext(FavouritesContext)
-    const [toWatch, setToWatch] = useContext(ToWatchContext)
-    const [overview, setOverview] = useContext(OverviewContext)
-    const [selected] = useContext(SelectedContext)
+    const { listId } = useContext(ListIdContext)
+    const { favourites, setFavourites } = useContext(FavouritesContext)
+    const { toWatch, setToWatch } = useContext(ToWatchContext)
+    const { setOverview } = useContext(OverviewContext)
+    const { selected } = useContext(SelectedContext)
+
     const [isFaved, setIsFaved] = useState(false)
     const [isToWatched, setIsToWatched] = useState(false)
 
@@ -26,7 +27,7 @@ const Movie = ({ movie }) => {
     useEffect(() => {
         setIsFaved(isAdded(favourites, movie.title))
         setIsToWatched(isAdded(toWatch, movie.title))
-    }, [favourites, toWatch, movie.title])
+    }, [favourites, toWatch, movie.title, setIsFaved, setIsToWatched])
 
     const handleOverview = () => {
         setOverview(movie)

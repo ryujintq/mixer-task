@@ -4,7 +4,7 @@ import { FavouritesContext } from '../../context/FavouritesContext'
 import './Favourites.css'
 
 const Favourites = () => {
-    const [favourites] = useContext(FavouritesContext)
+    const { favourites } = useContext(FavouritesContext)
 
     return (
         <div className='favourites page'>
