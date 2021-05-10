@@ -20,6 +20,7 @@ const App = () => {
   const [toWatch, setToWatch] = useContext(ToWatchContext)
   const [listId, setListId] = useContext(ListIdContext)
   const [overview] = useContext(OverviewContext)
+
   const pages = { Search, Favourites, ToWatch } //for dynamic page switching
   const Page = pages[selected] // get correct page to load 
 

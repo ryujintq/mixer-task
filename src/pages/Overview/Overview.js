@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { getImageURL } from '../../api/api'
+import OverviewEntry from '../../components/OverviewEntry/OverviewEntry'
 import { OverviewContext } from '../../context/OverviewContext'
 import './Overview.css'
 
@@ -20,22 +21,10 @@ const Overview = () => {
                 <div className="movie-info-content">
                     <img src={`${getImageURL(overview.poster_path)}`} alt="" />
                     <div className="description">
-                        <div className="entry">
-                            <h2>Title</h2>
-                            <p>{overview.title}</p>
-                        </div>
-                        <div className="entry">
-                            <h2>Description</h2>
-                            <p>{overview.overview}</p>
-                        </div>
-                        <div className="entry">
-                            <h2>Release Data</h2>
-                            <p>{overview.release_date}</p>
-                        </div>
-                        <div className="entry">
-                            <h2>Rating</h2>
-                            <p>{overview.vote_average}</p>
-                        </div>
+                        <OverviewEntry heading='Title' data={overview.title} />
+                        <OverviewEntry heading='Description' data={overview.overview} />
+                        <OverviewEntry heading='Release Data' data={overview.release_date} />
+                        <OverviewEntry heading='Rating' data={overview.vote_average} />
                     </div>
                 </div>
 

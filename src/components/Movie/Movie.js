@@ -22,6 +22,7 @@ const Movie = ({ movie }) => {
         return doesExist
     }
 
+    //check to see if movie has been added to a list
     useEffect(() => {
         setIsFaved(isAdded(favourites, movie.title))
         setIsToWatched(isAdded(toWatch, movie.title))
@@ -33,17 +34,13 @@ const Movie = ({ movie }) => {
 
     const handleAddToFavourites = async () => {
         if (isFaved) return
-        setFavourites(prevState => {
-            return [...prevState, movie]
-        })
+        setFavourites(prevState => [...prevState, movie])
         await updateMovieList(listId, [...favourites, movie], toWatch)
     }
 
     const handleAddToToWatch = async () => {
         if (isToWatched) return
-        setToWatch(prevState => {
-            return [...prevState, movie]
-        })
+        setToWatch(prevState => [...prevState, movie])
         await updateMovieList(listId, favourites, [...toWatch, movie])
     }
 
